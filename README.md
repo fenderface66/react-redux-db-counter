@@ -25,7 +25,7 @@ The site will be running at localhost:3000
 
 ## Stack
 
-Based on the react boilerplate this project uses the following technologies
+This project uses the following technologies
 
 ```
 - React (Base Framework)
