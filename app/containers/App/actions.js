@@ -48,6 +48,7 @@ export function resultsLoaded(results) {
 }
 
 export function changeVariable(variable) {
+	console.log(variable);
     return {
         type: CHANGE_VARIABLE,
         variable,

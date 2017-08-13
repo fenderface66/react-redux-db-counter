@@ -5,14 +5,19 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
-import { makeSelectVariables, makeSelectResults } from 'containers/App/selectors';
+import { makeSelectVariables, makeSelectResults, makeSelectChosenVariable } from 'containers/App/selectors';
 import { getResults, changeVariable } from 'containers/App/actions';
 import Wrapper from './Wrapper';
 import Option from './Option';
 
 export class SelectForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-  renderVariables() {
+  componentDidMount() {
+		const element = document.getElementById('varSelect');
+    element.value = this.props.chosenVariable;
+	}
+	
+	renderVariables() {
       const options = [];
       this.props.variables.map((variable, index) => {
         const key = `option${index}`;
@@ -32,7 +37,7 @@ export class SelectForm extends React.PureComponent { // eslint-disable-line rea
               <label htmlFor="varSelect">
                   Please select the variable you would like to view
               </label>
-              <select onChange={(evt) => this.props.onVariableChange(evt)}>
+              <select id="varSelect" name="varSelect" onChange={(evt) => this.props.onVariableChange(evt)}>
                 {this.renderVariables()}
               </select>
               <input type="submit" value="Search" />
@@ -44,6 +49,8 @@ export class SelectForm extends React.PureComponent { // eslint-disable-line rea
 
 SelectForm.propTypes = {
   variables: React.PropTypes.array,
+	results: React.PropTypes.array,
+	chosenVariable: React.PropTypes.string,
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -61,6 +68,7 @@ export function mapDispatchToProps(dispatch) {
 const mapStateToProps = createStructuredSelector({
   variables: makeSelectVariables(),
   results: makeSelectResults(),
+	chosenVariable: makeSelectChosenVariable(),
 });
 
 // Wrap the component to inject dispatch and state into it

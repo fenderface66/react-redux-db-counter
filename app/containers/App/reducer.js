@@ -41,6 +41,7 @@ function appReducer(state = initialState, action) {
         .set('results', action.results)
         .set('loadingResults', false)
     case CHANGE_VARIABLE:
+			console.log(action.variable);
       return state
         .set('chosenVariable', action.variable);
     default:
