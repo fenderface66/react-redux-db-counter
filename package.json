@@ -1,11 +1,11 @@
 {
-  "name": "react-boilerplate",
+  "name": "db-counter",
   "version": "0.0.0",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git//github.com/fenderface66/my-react-boilerplate.git"
-  },
+    "url": "git//github.com/fenderface66/react-redux-db-counter.git"
+   },
   "engines": {
     "npm": ">=3",
     "node": ">=5"
